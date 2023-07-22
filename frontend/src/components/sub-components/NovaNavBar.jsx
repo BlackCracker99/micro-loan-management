@@ -1,6 +1,29 @@
-import React from "react";
+import React, { useEffect } from "react";
+import novaAxiosClient from "../../config/novaAxiosClient";
+import { useStateContext } from "../../context/novaContextProvider";
 
-const NovaNavBar = () => {
+const NovaNavBar = (props) => {
+    const { user, token, setUser, setToken, notification } = useStateContext();
+    if (!token) {
+        return <Navigate to="/login" />;
+    }
+
+    useEffect(() => {
+        novaAxiosClient.get("/user").then(({ data }) => {
+            setUser(data);
+        });
+    }, []);
+
+    //logout
+    const onLogout = (e) => {
+        e.preventDefault();
+
+        novaAxiosClient.post("/logout").then(() => {
+            setUser({});
+            setToken(null);
+        });
+    };
+
     return (
         <nav class="z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <div class="px-3 py-3 lg:px-5 lg:pl-3">
@@ -90,7 +113,7 @@ const NovaNavBar = () => {
                             <span></span>
                         </div>
 
-                        <button
+                        {/* <button
                             id="toggleSidebarMobileSearch"
                             type="button"
                             class="p-2 text-gray-500 rounded-lg lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
@@ -126,9 +149,9 @@ const NovaNavBar = () => {
                             >
                                 <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
                             </svg>
-                        </button>
+                        </button> */}
 
-                        <div
+                        {/* <div
                             class="z-20 z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:divide-gray-600 dark:bg-gray-700"
                             id="notification-dropdown"
                             data-popper-placement="bottom"
@@ -350,9 +373,9 @@ const NovaNavBar = () => {
                                     View all
                                 </div>
                             </a>
-                        </div>
+                        </div> */}
 
-                        <button
+                        {/* <button
                             type="button"
                             data-dropdown-toggle="apps-dropdown"
                             class="hidden p-2 text-gray-500 rounded-lg sm:flex hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
@@ -367,9 +390,9 @@ const NovaNavBar = () => {
                             >
                                 <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                             </svg>
-                        </button>
+                        </button> */}
 
-                        <div
+                        {/* <div
                             class="z-20 z-50 max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:bg-gray-700 dark:divide-gray-600 hidden"
                             id="apps-dropdown"
                             data-popper-placement="bottom"
@@ -559,7 +582,8 @@ const NovaNavBar = () => {
                                     </div>
                                 </a>
                             </div>
-                        </div>
+                        </div> */}
+
                         <button
                             id="theme-toggle"
                             data-tooltip-target="tooltip-toggle"
@@ -589,6 +613,7 @@ const NovaNavBar = () => {
                                 ></path>
                             </svg>
                         </button>
+
                         <div
                             id="tooltip-toggle"
                             role="tooltip"
@@ -630,17 +655,17 @@ const NovaNavBar = () => {
                                         class="text-sm text-gray-900 dark:text-white"
                                         role="none"
                                     >
-                                        Neil Sims
+                                        {props.user.username}
                                     </p>
                                     <p
                                         class="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
                                         role="none"
                                     >
-                                        neil.sims@flowbite.com
+                                        {props.user.email}
                                     </p>
                                 </div>
                                 <ul class="py-1" role="none">
-                                    <li>
+                                    {/* <li>
                                         <a
                                             href="#"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -666,14 +691,15 @@ const NovaNavBar = () => {
                                         >
                                             Earnings
                                         </a>
-                                    </li>
+                                    </li> */}
                                     <li>
                                         <a
+                                            onClick={onLogout}
                                             href="#"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                             role="menuitem"
                                         >
-                                            Sign out
+                                            Log out
                                         </a>
                                     </li>
                                 </ul>

@@ -11,15 +11,7 @@ export default function DefaultLayout() {
         return <Navigate to="/login" />;
     }
 
-    //logout
-    const onLogout = (e) => {
-        e.preventDefault();
-
-        novaAxiosClient.post("/logout").then(() => {
-            setUser({});
-            setToken(null);
-        });
-    };
+    
 
     useEffect(() => {
         novaAxiosClient.get("/user").then(({ data }) => {
@@ -30,7 +22,7 @@ export default function DefaultLayout() {
     return (
         <div id="defaultLayout">
             {/* nav bar */}
-            <NovaNavBar />
+            <NovaNavBar user={{username:user.name , email:user.email}} />
 
             {/* sidebar */}
             <NovaSideBar />
