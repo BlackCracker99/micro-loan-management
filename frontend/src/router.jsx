@@ -7,6 +7,7 @@ import DefaultLayout from "./components/DefaultLayout";
 import GuestLayout from "./components/GuestLayout";
 import Dashboard from "./views/Dashboard";
 import UserForm from "./views/UserForm";
+import AdminUsers from "./views/AdminUsers";
 
 const router = createBrowserRouter([
   {
@@ -23,7 +24,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/users',
-        element: <Users/>
+        element: <AdminUsers/>
       },
       {
         path: '/users/new',
