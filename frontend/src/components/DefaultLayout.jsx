@@ -7,11 +7,10 @@ import NovaNavBar from "./sub-components/NovaNavBar";
 
 export default function DefaultLayout() {
     const { user, token, setUser, setToken, notification } = useStateContext();
+
     if (!token) {
         return <Navigate to="/login" />;
     }
-
-    
 
     useEffect(() => {
         novaAxiosClient.get("/user").then(({ data }) => {
@@ -22,15 +21,13 @@ export default function DefaultLayout() {
     return (
         <div id="defaultLayout">
             {/* nav bar */}
-            <NovaNavBar user={{username:user.name , email:user.email}} />
+            <NovaNavBar user={{ username: user.name, email: user.email }} />
 
             {/* sidebar */}
             <NovaSideBar />
-            
+
             <div class="sm:ml-64">
-                <div class="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
-                    <Outlet />
-                </div>
+                <Outlet />
             </div>
 
             {/* <aside>
