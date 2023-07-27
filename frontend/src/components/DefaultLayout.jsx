@@ -4,6 +4,7 @@ import { useStateContext } from "../context/novaContextProvider";
 import novaAxiosClient from "../config/novaAxiosClient";
 import NovaSideBar from "./sub-components/NovaSideBar";
 import NovaNavBar from "./sub-components/NovaNavBar";
+import NovaFooter from "./sub-components/NovaFooter";
 
 export default function DefaultLayout() {
     const { user, token, setUser, setToken, notification } = useStateContext();
@@ -24,11 +25,12 @@ export default function DefaultLayout() {
             <NovaNavBar user={{ username: user.name, email: user.email }} />
 
             {/* sidebar */}
-            <NovaSideBar />
 
+            <NovaSideBar />
             <div class="sm:ml-64">
                 <Outlet />
             </div>
+            <NovaFooter />
 
             {/* <aside>
                 <Link to="/dashboard">Dashboard</Link>
