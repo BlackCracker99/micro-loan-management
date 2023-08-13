@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
-import novaAxiosClient from "../../config/novaAxiosClient";
-import { useStateContext } from "../../context/novaContextProvider";
+import novaAxiosClient from "../config/novaAxiosClient";
+import { useStateContext } from "../context/novaContextProvider";
 
-const NovaNavBar = (props) => {
+export default function NavigationBar() {
     const { user, token, setUser, setToken, notification } = useStateContext();
     if (!token) {
         return <Navigate to="/login" />;
@@ -25,7 +25,7 @@ const NovaNavBar = (props) => {
     };
 
     return (
-        <nav class="z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
+        <nav class="fixed z-30 w-full bg-white border-b border-gray-200 dark:bg-gray-800 dark:border-gray-700">
             <div class="px-3 py-3 lg:px-5 lg:pl-3">
                 <div class="flex items-center justify-between">
                     <div class="flex items-center justify-start">
@@ -67,15 +67,15 @@ const NovaNavBar = (props) => {
                             class="flex ml-2 md:mr-24"
                         >
                             <img
-                                src="/nova-logo.png"
+                                src="/nova.png"
                                 class="h-8 mr-3"
                                 alt="FlowBite Logo"
                             />
                             <span class="self-center text-xl font-semibold sm:text-2xl whitespace-nowrap dark:text-white">
-                                Micro Loan
+                                Micro Finance Management
                             </span>
                         </a>
-                        {/* <form
+                        <form
                             action="#"
                             method="GET"
                             class="hidden lg:block lg:pl-3.5"
@@ -106,14 +106,24 @@ const NovaNavBar = (props) => {
                                     placeholder="Search"
                                 />
                             </div>
-                        </form> */}
+                        </form>
                     </div>
                     <div class="flex items-center">
                         <div class="hidden mr-3 -mb-1 sm:block">
-                            <span></span>
+                            <a
+                                class="github-button"
+                                href="https://github.com/themesberg/flowbite-admin-dashboard"
+                                data-color-scheme="no-preference: dark; light: light; dark: light;"
+                                data-icon="octicon-star"
+                                data-size="large"
+                                data-show-count="true"
+                                aria-label="Star themesberg/flowbite-admin-dashboard on GitHub"
+                            >
+                                Star
+                            </a>
                         </div>
 
-                        {/* <button
+                        <button
                             id="toggleSidebarMobileSearch"
                             type="button"
                             class="p-2 text-gray-500 rounded-lg lg:hidden hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white"
@@ -149,12 +159,11 @@ const NovaNavBar = (props) => {
                             >
                                 <path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"></path>
                             </svg>
-                        </button> */}
+                        </button>
 
-                        {/* <div
+                        <div
                             class="z-20 z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:divide-gray-600 dark:bg-gray-700"
                             id="notification-dropdown"
-                            data-popper-placement="bottom"
                         >
                             <div class="block px-4 py-2 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 Notifications
@@ -184,7 +193,7 @@ const NovaNavBar = (props) => {
                                     </div>
                                     <div class="w-full pl-3">
                                         <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
-                                            New message from{" "}
+                                            New message from
                                             <span class="font-semibold text-gray-900 dark:text-white">
                                                 Bonnie Green
                                             </span>
@@ -221,11 +230,11 @@ const NovaNavBar = (props) => {
                                         <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
                                             <span class="font-semibold text-gray-900 dark:text-white">
                                                 Jese leos
-                                            </span>{" "}
-                                            and{" "}
+                                            </span>
+                                            and
                                             <span class="font-medium text-gray-900 dark:text-white">
                                                 5 others
-                                            </span>{" "}
+                                            </span>
                                             started following you.
                                         </div>
                                         <div class="text-xs font-medium text-primary-700 dark:text-primary-400">
@@ -262,11 +271,11 @@ const NovaNavBar = (props) => {
                                         <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
                                             <span class="font-semibold text-gray-900 dark:text-white">
                                                 Joseph Mcfall
-                                            </span>{" "}
-                                            and{" "}
+                                            </span>
+                                            and
                                             <span class="font-medium text-gray-900 dark:text-white">
                                                 141 others
-                                            </span>{" "}
+                                            </span>
                                             love your story. See it and view
                                             more stories.
                                         </div>
@@ -304,11 +313,11 @@ const NovaNavBar = (props) => {
                                         <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
                                             <span class="font-semibold text-gray-900 dark:text-white">
                                                 Leslie Livingston
-                                            </span>{" "}
-                                            mentioned you in a comment:{" "}
+                                            </span>
+                                            mentioned you in a comment:
                                             <span class="font-medium text-primary-700 dark:text-primary-500">
                                                 @bonnie.green
-                                            </span>{" "}
+                                            </span>
                                             what do you say?
                                         </div>
                                         <div class="text-xs font-medium text-primary-700 dark:text-primary-400">
@@ -341,7 +350,7 @@ const NovaNavBar = (props) => {
                                         <div class="text-gray-500 font-normal text-sm mb-1.5 dark:text-gray-400">
                                             <span class="font-semibold text-gray-900 dark:text-white">
                                                 Robert Brown
-                                            </span>{" "}
+                                            </span>
                                             posted a new video: Glassmorphism -
                                             learn how to implement the new
                                             design trend.
@@ -356,7 +365,7 @@ const NovaNavBar = (props) => {
                                 href="#"
                                 class="block py-2 text-base font-normal text-center text-gray-900 bg-gray-50 hover:bg-gray-100 dark:bg-gray-700 dark:text-white dark:hover:underline"
                             >
-                                <div class="inline-flex items-center ">
+                                <div class="inline-flex items-center">
                                     <svg
                                         class="w-5 h-5 mr-2"
                                         fill="currentColor"
@@ -373,9 +382,9 @@ const NovaNavBar = (props) => {
                                     View all
                                 </div>
                             </a>
-                        </div> */}
+                        </div>
 
-                        {/* <button
+                        <button
                             type="button"
                             data-dropdown-toggle="apps-dropdown"
                             class="hidden p-2 text-gray-500 rounded-lg sm:flex hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-700"
@@ -390,12 +399,11 @@ const NovaNavBar = (props) => {
                             >
                                 <path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h2a2 2 0 002-2v-2a2 2 0 00-2-2H5zM11 5a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V5zM11 13a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
                             </svg>
-                        </button> */}
+                        </button>
 
-                        {/* <div
-                            class="z-20 z-50 max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:bg-gray-700 dark:divide-gray-600 hidden"
+                        <div
+                            class="z-20 z-50 hidden max-w-sm my-4 overflow-hidden text-base list-none bg-white divide-y divide-gray-100 rounded shadow-lg dark:bg-gray-700 dark:divide-gray-600"
                             id="apps-dropdown"
-                            data-popper-placement="bottom"
                         >
                             <div class="block px-4 py-2 text-base font-medium text-center text-gray-700 bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                 Apps
@@ -582,8 +590,7 @@ const NovaNavBar = (props) => {
                                     </div>
                                 </a>
                             </div>
-                        </div> */}
-
+                        </div>
                         <button
                             id="theme-toggle"
                             data-tooltip-target="tooltip-toggle"
@@ -601,7 +608,7 @@ const NovaNavBar = (props) => {
                             </svg>
                             <svg
                                 id="theme-toggle-light-icon"
-                                class="w-5 h-5"
+                                class="hidden w-5 h-5"
                                 fill="currentColor"
                                 viewBox="0 0 20 20"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -613,18 +620,13 @@ const NovaNavBar = (props) => {
                                 ></path>
                             </svg>
                         </button>
-
                         <div
                             id="tooltip-toggle"
                             role="tooltip"
-                            class="absolute z-10 inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm tooltip opacity-0 invisible"
-                            data-popper-placement="bottom"
+                            class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip"
                         >
                             Toggle dark mode
-                            <div
-                                class="tooltip-arrow"
-                                data-popper-arrow=""
-                            ></div>
+                            <div class="tooltip-arrow" data-popper-arrow></div>
                         </div>
 
                         <div class="flex items-center ml-3">
@@ -646,26 +648,25 @@ const NovaNavBar = (props) => {
                             </div>
 
                             <div
-                                class="z-50 my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600 hidden"
+                                class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
                                 id="dropdown-2"
-                                data-popper-placement="bottom"
                             >
                                 <div class="px-4 py-3" role="none">
                                     <p
                                         class="text-sm text-gray-900 dark:text-white"
                                         role="none"
                                     >
-                                        {props.user.username}
+                                        Neil Sims
                                     </p>
                                     <p
                                         class="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
                                         role="none"
                                     >
-                                        {props.user.email}
+                                        neil.sims@flowbite.com
                                     </p>
                                 </div>
                                 <ul class="py-1" role="none">
-                                    {/* <li>
+                                    <li>
                                         <a
                                             href="#"
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
@@ -691,15 +692,15 @@ const NovaNavBar = (props) => {
                                         >
                                             Earnings
                                         </a>
-                                    </li> */}
+                                    </li>
                                     <li>
                                         <a
-                                            onClick={onLogout}
                                             href="#"
+                                            onClick={onLogout}
                                             class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                                             role="menuitem"
                                         >
-                                            Log out
+                                            Sign out
                                         </a>
                                     </li>
                                 </ul>
@@ -710,6 +711,4 @@ const NovaNavBar = (props) => {
             </div>
         </nav>
     );
-};
-
-export default NovaNavBar;
+}
