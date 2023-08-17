@@ -6,6 +6,7 @@ import DefaultLayout from './layouts/DefaultLayout'
 import GuestLayout from './layouts/GuestLayout'
 import Dashboard from "./views/Dashboard";
 import AdminUsers from "./views/AdminUsers";
+import LoanApplications from "./views/LoanApplications";
 import UserForm from "./views/UserForm";
 
 
@@ -22,6 +23,10 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard",
                 element: <Dashboard />,
+            },
+            {
+                path: "/loan-applications",
+                element: <LoanApplications />,
             },
             {
                 path: "/users",
