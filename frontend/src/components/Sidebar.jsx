@@ -117,14 +117,14 @@ export default function SideNavigationBar() {
                     </li>
                     <li>
                       <a
-                        href="https://flowbite-admin-dashboard.vercel.app/crud/users/"
+                        href="/loan-types"
                         class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700"
                         >Loan Types</a
                       >
                     </li>
                     <li>
                       <a
-                        href="https://flowbite-admin-dashboard.vercel.app/crud/users/"
+                        href="#"
                         class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700"
                         >Loan Plans</a
                       >
@@ -134,7 +134,7 @@ export default function SideNavigationBar() {
 
                 <li>
                   <a
-                    href="https://flowbite-admin-dashboard.vercel.app/settings/"
+                    href=""
                     class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700"
                   >
                     <svg
@@ -156,7 +156,7 @@ export default function SideNavigationBar() {
 
                 <li>
                   <a
-                    href="https://flowbite-admin-dashboard.vercel.app/settings/"
+                    href=""
                     class="flex items-center p-2 text-base text-gray-900 rounded-lg hover:bg-gray-100 group dark:text-gray-200 dark:hover:bg-gray-700"
                   >
                     <svg
@@ -218,7 +218,7 @@ export default function SideNavigationBar() {
                   <ul id="dropdown-approval" class="space-y-2 py-2 hidden">
                     <li>
                       <a
-                        href="https://flowbite-admin-dashboard.vercel.app/crud/products/"
+                        href=""
                         class="text-base text-gray-900 rounded-lg flex items-center p-2 group hover:bg-gray-100 transition duration-75 pl-11 dark:text-gray-200 dark:hover:bg-gray-700"
                         >Pending</a
                       >

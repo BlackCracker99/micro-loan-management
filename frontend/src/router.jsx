@@ -8,6 +8,7 @@ import Dashboard from "./views/Dashboard";
 import AdminUsers from "./views/AdminUsers";
 import LoanApplications from "./views/LoanApplications";
 import UserForm from "./views/UserForm";
+import LoanTypes from "./views/LoanTypes";
 
 
 
@@ -27,6 +28,10 @@ const router = createBrowserRouter([
             {
                 path: "/loan-applications",
                 element: <LoanApplications />,
+            },
+            {
+                path: "/loan-types",
+                element: <LoanTypes />,
             },
             {
                 path: "/users",
