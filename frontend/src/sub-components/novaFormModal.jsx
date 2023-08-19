@@ -13,7 +13,7 @@ export default function FormModal(props) {
                 onClose={() => props.setOpenModal(undefined)}
                 size={props.modalSize}
             >
-                <Modal.Header>Add New Application</Modal.Header>
+                <Modal.Header></Modal.Header>
                 <Modal.Body>
                     {props.children}
                 </Modal.Body>
