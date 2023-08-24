@@ -2,18 +2,30 @@ import React, { useState } from "react";
 import NovaTable from "../sub-components/novaTable";
 import ButtonsWithIcon from "../sub-components/novaBtnWithIcon";
 import FormModal from "../sub-components/novaFormModal";
-import { Label, TextInput, Select, Textarea , Table } from "flowbite-react";
+import { Label, TextInput, Select, Textarea, Table } from "flowbite-react";
 import { HiPlus } from "react-icons/hi";
+import DeleteModal from "../sub-components/novaConfirmDeleteModal";
 
 const LoanApplications = () => {
     const [openModal, setOpenModal] = useState(false);
+    const [openDeleteModal, setOpenDeleteModal] = useState(false);
 
+    //new application modal
     const handleOpenModal = () => {
         setOpenModal(true);
     };
 
     const handleCloseModal = () => {
         setOpenModal(false);
+    };
+
+    //delete modal
+    const handleOpenDeleteModal = () => {
+        setOpenDeleteModal(true);
+    };
+
+    const handleCloseDeleteModal = () => {
+        setOpenDeleteModal(false);
     };
 
     return (
@@ -274,12 +286,20 @@ const LoanApplications = () => {
                     </div>
                 }
             </FormModal>
+
             <ButtonsWithIcon
                 text="Add New Application"
                 classes="w-64 mb-2"
                 onClick={handleOpenModal}
                 btnIcon={HiPlus}
             />
+
+            <DeleteModal
+                openModal={openDeleteModal}
+                setOpenModal={handleCloseDeleteModal}
+                modalSize="2xl"
+            ></DeleteModal>
+
             <NovaTable
                 classes="lg:w-4/5"
                 tblColumns={[
@@ -333,14 +353,16 @@ const LoanApplications = () => {
                             <Table.Cell>
                                 <a
                                     className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-                                    href="/tables"
+                                    onClick={handleOpenModal}
+                                    href="#"
                                 >
                                     <p>Edit</p>
                                 </a>
 
                                 <a
                                     className="font-medium text-red-600 hover:underline dark:text-red-500"
-                                    href="/tables"
+                                    href="#"
+                                    onClick={handleOpenDeleteModal}
                                 >
                                     <p>Delete</p>
                                 </a>
@@ -439,10 +461,7 @@ const LoanApplications = () => {
                                 </p>
                             </Table.Cell>
                             <Table.Cell>
-                                <a
-                                    className="font-medium text-cyan-600 hover:underline dark:text-cyan-500"
-                                    href="/tables"
-                                >
+                                <a className="font-medium text-cyan-600 hover:underline dark:text-cyan-500">
                                     <p>Edit</p>
                                 </a>
 
