@@ -11,6 +11,8 @@ import UserForm from "./views/UserForm";
 import LoanTypes from "./views/LoanTypes";
 import LoanPlans from "./views/LoanPlans";
 import Payments from "./views/Payments";
+import Villages from "./views/Villages";
+import Groups from "./views/Groups";
 
 
 
@@ -42,6 +44,14 @@ const router = createBrowserRouter([
             {
                 path: "/payments",
                 element: <Payments />,
+            },
+            {
+                path: "/villages",
+                element: <Villages />,
+            },
+            {
+                path: "/groups",
+                element: <Groups />,
             },
             {
                 path: "/users",
